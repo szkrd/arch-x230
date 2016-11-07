@@ -28,5 +28,6 @@
 - chromium
 - leafpad
 - tk gtk2 lxappearance
+- gnome-themes-standard, adwaita-icon-theme
 
 ----
