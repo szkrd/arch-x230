@@ -1,3 +1,4 @@
+eval $(ssh-agent)
 xrdb ~/.Xresources
 
 # detected with `xinput list` and `xinput list-props`
