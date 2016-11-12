@@ -1,0 +1,124 @@
+# menus
+# =====
+#
+OnDesktop Mouse1 :HideMenus
+OnDesktop Mouse2 :WorkspaceMenu
+OnDesktop Mouse3 :RootMenu
+OnTitlebar Mouse3 :WindowMenu
+Mod4 space :RootMenu
+Mod1 space :WindowMenu
+Mod4 0 :WorkspaceMenu
+
+# workspaces
+# ==========
+#
+OnDesktop Mouse4 :PrevWorkspace
+OnDesktop Mouse5 :NextWorkspace
+Mod4 Right :NextWorkspace
+Mod4 Left :PrevWorkspace
+Control Mod4 Left :TakeToPrevWorkspace
+Control Mod4 Right :TakeToNextWorkspace
+Mod4 1 :Workspace 1
+Mod4 2 :Workspace 2
+Mod4 3 :Workspace 3
+Mod4 4 :Workspace 4
+
+# applications
+# ============
+#
+Mod4 r :Exec fbrun
+Mod1 F2 :Exec fbrun
+Mod4 x :Exec xterm
+Mod4 a :Exec xterm -e alsamixer & sh -c "sleep .1 && fluxbox-remote maximizehorizontal"
+Mod4 j :Exec leafpad ~/jegyzet.txt
+Mod4 l :Exec ~/bin/xlock.sh
+Mod4 p :Exec xrandr --output LVDS1 --auto --output HDMI1 --off
+Control Shift Escape :Exec xterm -e htop & sh -c "sleep .1 && fluxbox-remote maximize"
+
+# app switching
+# =============
+#
+# * alt + tab
+# * alt + shift + tab
+# * win + tab = inner tab next
+# * win + shift + tab = inner tab prev
+# * scroll on toolbar
+# 
+Mod1 Tab :NextWindow {groups} (workspace=[current])
+Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
+Mod4 Tab :NextTab
+Mod4 Shift Tab :PrevTab
+OnToolbar Mouse4 :PrevWindow {static groups} (iconhidden=no)
+OnToolbar Mouse5 :NextWindow {static groups} (iconhidden=no)
+
+# volume and brightness
+# =====================
+# use `xmodmap -pke` and/or `xev`
+#
+# * media keys
+# * win + alt + m = mute
+# * win + alt + right = vol up
+# * win + alt + left = vol down
+# * win + alt + up = brightness up
+# * win + alt + down = brightness down
+#
+# notes:
+# * raw volume inc/dec: amixer set Master 5+
+#
+XF86AudioMute :Exec sound.sh mute
+XF86AudioRaiseVolume :Exec sound.sh up
+XF86AudioLowerVolume :Exec sound.sh down
+Mod4 Mod1 m :Exec sound.sh mute
+Mod4 Mod1 Right :Exec sound.sh up
+Mod4 Mod1 Left :Exec sound.sh down
+XF86MonBrightnessUp :Exec xbacklight -inc 5
+XF86MonBrightnessDown :Exec xbacklight -dec 5
+Mod4 Mod1 Up :Exec xbacklight -inc 5
+Mod4 Mod1 Down :Exec xbacklight -dec 5
+
+
+# handle windows
+# ==============
+#
+Mod1 F4 :Close
+Mod4 F4 :Kill
+Mod4 Down :Minimize
+Mod4 Up :Maximize
+Mod4 F11 :Fullscreen
+Mod4 Mod1 d :ToggleDecor
+Mod4 d :ShowDesktop
+#
+# move/resize and focus
+#
+OnWindow Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+OnWindowBorder Move1 :StartMoving
+OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+OnLeftGrip Move1 :StartResizing bottomleft
+OnRightGrip Move1 :StartResizing bottomright
+OnTitlebar Mouse1 :MacroCmd {Raise} {Focus} {ActivateTab}
+OnTitlebar Move1  :StartMoving
+#
+# shade and lower
+#
+OnTitlebar Double Mouse1 :Shade
+Mod4 s :Shade
+OnWindow Mod1 Mouse2 :Lower
+OnTitlebar Mouse2 :Lower
+#
+# ctrl drag to combine tabs
+#
+OnTitlebar Control Mouse1 :StartTabbing
+
+# fluxbox
+# =======
+Mod4 Shift r :Reconfigure
+Control Mod1 Shift Delete :Exit
+
+# unused
+# ======
+#
+#Mod4 Left :SendToPrevWorkspace
+#Mod4 Right :SendToNextWorkspace
+#Control F1 :Workspace 1
+#Mod4 F1 :SendToWorkspace 1
+#Control Mod4 F1 :TakeToWorkspace 1

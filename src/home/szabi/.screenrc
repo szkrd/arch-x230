@@ -3,10 +3,6 @@
 # 
 # prefix is `ctrl + a` (@)
 #
-# * F2 = resize layout mode (hjkl to resize, enter to finish)
-# * F3, F4 = next/prev window
-# * ctrl + arrows = jump to layout (or use @tab)
-#
 # * @c = create new window
 # * @A = rename window
 # * @a = switch window
@@ -17,6 +13,8 @@
 # * @| = split vertically
 # * @Q = remove all other splits at once
 # * @X = remove split
+# * @R = resize mode (use hjkl to resize)
+# * ctrl + arrows = jump to layout (or use @tab)
 # 
 # * @d = detach
 # * @\ = kill everything
@@ -51,12 +49,8 @@ bindkey "^[[1;5C" focus right
 bindkey "^[[1;5A" focus up
 bindkey "^[[1;5B" focus down
 
-# switch windows with F3 (prev) and F4 (next)
-bindkey "^[OR" prev
-bindkey "^[OS" next
-
-# F2 puts Screen into resize mode. Resize regions using hjkl keys.
-bindkey "^[OQ" eval "command -c rsz" # enter resize mode
+# @R for resizing
+bindkey R eval "command -c rsz" # enter resize mode
 
 # use hjkl keys to resize regions
 bind -c rsz h eval "resize -h -1" "command -c rsz"

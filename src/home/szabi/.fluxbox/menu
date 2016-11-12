@@ -21,10 +21,23 @@
   [exec] (doublecmd) {doublecmd}
   [exec] (chromium) {chromium}
   [exec] (qbittorrent) {qbittorrent}
+  [exec] (audacious) {audacious}
   [exec] (lxappearance) {lxappearance}
   [exec] (reconky) {pkill conky && conky -d}
   [submenu] (hw)
-    [exec] (alsamixer) {xterm -e alsamixer}
+    [submenu] (audio)
+      [exec] (alsamixer) {xterm -e alsamixer}
+      [exec] (list playback devices) {xterm -e "aplay -l && read"}
+    [end]
+    [submenu] (cpu)
+      [exec] (cpu frequencies live [i7z]) {xterm -e "sudo i7z"}
+      [exec] (cpu frequencies [cpupower+pstate]) {xterm -e "cpupower frequency-info && echo ---- && pstate-frequency --get && read"}
+      [separator]
+      [exec] (1 minimum locked) {sudo pstate-frequency -S -p 1}
+      [exec] (2 balanced) {sudo pstate-frequency -S -p 2}
+      [exec] (3 balanced w boost) {sudo pstate-frequency -S -p 3}
+      [exec] (0 battery:min, power:bala) {sudo pstate-frequency -S -p 0}
+    [end]
     [submenu] (randr)
       [exec] (builtin only) {xrandr --output LVDS1 --auto --output HDMI1 --off}
       [exec] (external only) {xrandr --output LVDS1 --off --output HDMI1 --auto}
