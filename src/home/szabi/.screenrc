@@ -1,0 +1,72 @@
+# mostly copied from https://gist.github.com/joaopizani/2718397
+# ----
+# 
+# prefix is `ctrl + a` (@)
+#
+# * F2 = resize layout mode (hjkl to resize, enter to finish)
+# * F3, F4 = next/prev window
+# * ctrl + arrows = jump to layout (or use @tab)
+#
+# * @c = create new window
+# * @A = rename window
+# * @a = switch window
+# * @n = next window
+# * @p = prev window
+# * @l = list windows
+# * @s = split vertically
+# * @| = split vertically
+# * @Q = remove all other splits at once
+# * @X = remove split
+# 
+# * @d = detach
+# * @\ = kill everything
+# * @k = kill current
+#
+
+defscrollback 5000
+startup_message off
+
+# the following two lines give a two-line status, with the current window highlighted
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%C%A%{g}]'
+
+# 256 colors
+attrcolor b ".I"
+termcap xterm "XT=true"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
+# mouse tracking allows to switch region focus by clicking
+mousetrack on
+
+# get rid of silly xoff stuff
+bind s split
+
+# use @l instead of @"
+bind l windowlist -b
+
+# navigating regions with Ctrl-arrows
+bindkey "^[[1;5D" focus left
+bindkey "^[[1;5C" focus right
+bindkey "^[[1;5A" focus up
+bindkey "^[[1;5B" focus down
+
+# switch windows with F3 (prev) and F4 (next)
+bindkey "^[OR" prev
+bindkey "^[OS" next
+
+# F2 puts Screen into resize mode. Resize regions using hjkl keys.
+bindkey "^[OQ" eval "command -c rsz" # enter resize mode
+
+# use hjkl keys to resize regions
+bind -c rsz h eval "resize -h -1" "command -c rsz"
+bind -c rsz j eval "resize -v -1" "command -c rsz"
+bind -c rsz k eval "resize -v +1" "command -c rsz"
+bind -c rsz l eval "resize -h +1" "command -c rsz"
+
+# quickly switch between regions using tab and arrows
+bind -c rsz \t    eval "focus"       "command -c rsz" # Tab
+bind -c rsz -k kl eval "focus left"  "command -c rsz" # Left
+bind -c rsz -k kr eval "focus right" "command -c rsz" # Right
+bind -c rsz -k ku eval "focus up"    "command -c rsz" # Up
+bind -c rsz -k kd eval "focus down"  "command -c rsz" # Down

@@ -1,12 +1,12 @@
-# dpi should be 125.37, but that's just huge
-# the rest has been taken from the arch forum 
+!dpi should be 125.37, but thats just huge
+!the rest has been taken from the arch forum 
 xft.dpi:        110
 xft.antialias:  true
 xft.rgba:       rgb
 xft.hinting:    true
 xft.hintstyle:  hintslight
 
-# xterm settings, mostly taken from the arch wiki
+!xterm settings, mostly taken from the arch wiki
 xterm*reverseVideo: on
 xterm*termName: xterm-256color
 xterm*locale: true
@@ -14,3 +14,5 @@ xterm*metaSendsEscape: true
 xterm*eightBitInput: false
 xterm*FaceName: Liberation Mono
 xterm*FaceSize: 11
+XTerm*backarrowKey: false
+XTerm*ttyModes: erase ^?
