@@ -34,7 +34,7 @@ session.screen0.tab.width:	64
 session.screen0.menuDelay:	200
 session.screen0.showwindowposition:	false
 session.screen0.tabFocusModel:	ClickToTabFocus
-session.screen0.edgeSnapThreshold:	10
+session.screen0.edgeSnapThreshold:	3
 session.screen0.focusModel:	ClickFocus
 session.screen0.antialias:	true
 session.screen0.defaultDeco:	NORMAL

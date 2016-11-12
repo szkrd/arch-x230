@@ -24,10 +24,30 @@
   [exec] (audacious) {audacious}
   [exec] (lxappearance) {lxappearance}
   [exec] (reconky) {pkill conky && conky -d}
-  [submenu] (hw)
+  [submenu] (hardware)
     [submenu] (audio)
       [exec] (alsamixer) {xterm -e alsamixer}
       [exec] (list playback devices) {xterm -e "aplay -l && read"}
+      [separator]
+      [exec] (default hdmi) {hdmi_audio.sh on}
+      [exec] (default internal) {hdmi_audio.sh off}
+    [end]
+    [submenu] (video)
+      [submenu] (backlight)
+        [exec] (10 nighttime birds) {xbacklight -set 10}
+        [exec] (15 easy on the eyes) {xbacklight -set 15}
+        [exec] (20 rainy saturday) {xbacklight -set 20}
+        [exec] (30 spring sunshine) {xbacklight -set 30}
+        [exec] (50 so bright) {xbacklight -set 50}
+        [exec] (70 serious eyebleed) {xbacklight -set 70}
+        [exec] (90 nuclear holocaust) {xbacklight -set 90}
+      [end]
+      [exec] (list connected displays) {xterm -e "video.sh list-connected && read"}
+      [separator]
+      [exec] (builtin only) {video.sh vga}
+      [exec] (external only) {video.sh hdmi-simple}
+      [exec] (external with reset and conky restart) {video.sh hdmi}
+      [exec] (both HDMI1 and LVDS1 on auto) {video.sh both}
     [end]
     [submenu] (cpu)
       [exec] (cpu frequencies live [i7z]) {xterm -e "sudo i7z"}
@@ -38,23 +58,8 @@
       [exec] (3 balanced w boost) {sudo pstate-frequency -S -p 3}
       [exec] (0 battery:min, power:bala) {sudo pstate-frequency -S -p 0}
     [end]
-    [submenu] (randr)
-      [exec] (builtin only) {xrandr --output LVDS1 --auto --output HDMI1 --off}
-      [exec] (external only) {xrandr --output LVDS1 --off --output HDMI1 --auto}
-      [exec] (external with reset and conky restart) {xrandr --output LVDS1 --auto --output HDMI1 --off && xrandr --output LVDS1 --off --output HDMI1 --auto && pkill conky && sleep 1 && conky -d}
-      [exec] (both HDMI1 and LVDS1 on auto) {xrandr --output LVDS1 --auto --output HDMI1 --auto}
-    [end]
-    [submenu] (backlight)
-      [exec] (10 nighttime birds) {xbacklight -set 10}
-      [exec] (15 easy on the eyes) {xbacklight -set 15}
-      [exec] (20 rainy saturday) {xbacklight -set 20}
-      [exec] (30 spring sunshine) {xbacklight -set 30}
-      [exec] (50 so bright) {xbacklight -set 50}
-      [exec] (70 serious eyebleed) {xbacklight -set 70}
-      [exec] (90 nuclear holocaust) {xbacklight -set 90}
-    [end]
   [end]
-  [submenu] (fluxbox menu)
+  [submenu] (fluxbox)
     [exec] (config files) {geany -s ~/.fluxbox/startup ~/.fluxbox/menu ~/.fluxbox/keys ~/.fluxbox/init}
     [config] (configure)
     [submenu] (system styles) {Choose a style...}

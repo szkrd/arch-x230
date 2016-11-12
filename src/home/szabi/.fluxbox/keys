@@ -6,6 +6,7 @@ OnDesktop Mouse2 :WorkspaceMenu
 OnDesktop Mouse3 :RootMenu
 OnTitlebar Mouse3 :WindowMenu
 Mod4 space :RootMenu
+Mod4 y :RootMenu
 Mod1 space :WindowMenu
 Mod4 0 :WorkspaceMenu
 
@@ -29,11 +30,12 @@ Mod4 4 :Workspace 4
 Mod4 r :Exec fbrun
 Mod1 F2 :Exec fbrun
 Mod4 x :Exec xterm
-Mod4 a :Exec xterm -e alsamixer & sh -c "sleep .1 && fluxbox-remote maximizehorizontal"
+Mod4 a :Exec xterm -e alsamixer & sh -c "sleep .5 && fluxbox-remote maximizehorizontal"
 Mod4 j :Exec leafpad ~/jegyzet.txt
 Mod4 l :Exec ~/bin/xlock.sh
-Mod4 p :Exec xrandr --output LVDS1 --auto --output HDMI1 --off
-Control Shift Escape :Exec xterm -e htop & sh -c "sleep .1 && fluxbox-remote maximize"
+Mod4 p :Exec video.sh vga
+Mod4 Mod1 p :Exec video.sh hdmi
+Control Shift Escape :Exec xterm -e htop & sh -c "sleep .5 && fluxbox-remote maximize"
 
 # app switching
 # =============
@@ -83,6 +85,7 @@ Mod4 Mod1 Down :Exec xbacklight -dec 5
 Mod1 F4 :Close
 Mod4 F4 :Kill
 Mod4 Down :Minimize
+Mod4 m :Minimize
 Mod4 Up :Maximize
 Mod4 F11 :Fullscreen
 Mod4 Mod1 d :ToggleDecor
@@ -91,7 +94,7 @@ Mod4 d :ShowDesktop
 # move/resize and focus
 #
 OnWindow Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
-OnWindowBorder Move1 :StartMoving
+#OnWindowBorder Move1 :StartMoving
 OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
 OnLeftGrip Move1 :StartResizing bottomleft
 OnRightGrip Move1 :StartResizing bottomright
@@ -102,6 +105,8 @@ OnTitlebar Move1  :StartMoving
 #
 OnTitlebar Double Mouse1 :Shade
 Mod4 s :Shade
+OnTitlebar Mouse4 :ShadeOn
+OnTitlebar Mouse5 :ShadeOff
 OnWindow Mod1 Mouse2 :Lower
 OnTitlebar Mouse2 :Lower
 #
