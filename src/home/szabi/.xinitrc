@@ -1,4 +1,7 @@
-eval $(ssh-agent)
+# https://wiki.archlinux.org/index.php?title=SSH_keys&redirect=no#Keychain
+#keychain ~/.ssh/id_rsa
+#[ -f ~/.keychain/$HOSTNAME-sh ] && . ~/.keychain/$HOSTNAME-sh 2>/dev/null
+
 xrdb ~/.Xresources
 setxkbmap hu
 

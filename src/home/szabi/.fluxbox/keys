@@ -73,10 +73,10 @@ XF86AudioLowerVolume :Exec sound.sh down
 Mod4 Mod1 m :Exec sound.sh mute
 Mod4 Mod1 Right :Exec sound.sh up
 Mod4 Mod1 Left :Exec sound.sh down
-XF86MonBrightnessUp :Exec xbacklight -inc 5
-XF86MonBrightnessDown :Exec xbacklight -dec 5
-Mod4 Mod1 Up :Exec xbacklight -inc 5
-Mod4 Mod1 Down :Exec xbacklight -dec 5
+XF86MonBrightnessUp :Exec xbacklight -inc 10
+XF86MonBrightnessDown :Exec xbacklight -dec 10
+Mod4 Mod1 Up :Exec xbacklight -inc 10
+Mod4 Mod1 Down :Exec xbacklight -dec 10
 
 
 # handle windows

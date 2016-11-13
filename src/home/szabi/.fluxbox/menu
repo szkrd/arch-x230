@@ -22,9 +22,14 @@
   [exec] (chromium) {chromium}
   [exec] (qbittorrent) {qbittorrent}
   [exec] (audacious) {audacious}
+  [exec] (pcmanfm) {pcmanfm}
   [exec] (lxappearance) {lxappearance}
   [exec] (reconky) {pkill conky && conky -d}
   [submenu] (hardware)
+    [submenu] (storage)
+      [exec] (mount usb stick) {xterm -e "usbstick.sh && echo Done. && read"}
+      [exec] (unmount) {xterm -e "unmount.sh && echo Done. && read"}
+    [end]
     [submenu] (audio)
       [exec] (alsamixer) {xterm -e alsamixer}
       [exec] (list playback devices) {xterm -e "aplay -l && read"}
@@ -74,7 +79,16 @@
     [restart] (restart)
     [exec] (about) {(fluxbox -v; fluxbox -info | sed 1d) | xmessage -file - -center}
     [separator]
-    [exit] (exit)
+    [exit] (exit fluxbox)
+  [end]
+  [submenu] (exit)
+    [exec] (suspend/sleep) {sudo systemctl suspend && xlock.sh}
+    [exec] (hibernate) {sudo systemctl hibernate && xlock.sh}
+    [exec] (hybrid-sleep) {sudo systemctl hybrid-sleep && xlock.sh}
+    [separator]
+    [exec] (reboot) {lxqt-sudo systemctl reboot}
+    [exec] (poweroff) {lxqt-sudo systemctl poweroff}
+    [exec] (exit fluxbox) {xterm -e "echo U sure? && read && fluxbox-remote exit"}
   [end]
 [endencoding]
 [end]

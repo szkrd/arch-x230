@@ -12,15 +12,15 @@ UNIT="dB"   # dB, %, etc.
 SETVOL="/usr/bin/amixer -qc 0 set Master"
 
 case "$1" in  
-    "up")
-          $SETVOL $STEP$UNIT+
-          ;;
+  "up")
+    $SETVOL $STEP$UNIT+
+    ;;
   "down")
-          $SETVOL $STEP$UNIT-
-          ;;
+    $SETVOL $STEP$UNIT-
+    ;;
   "mute")
-          $SETVOL toggle
-          ;;
+    $SETVOL toggle
+    ;;
 esac
 
 # Get current volume and state
