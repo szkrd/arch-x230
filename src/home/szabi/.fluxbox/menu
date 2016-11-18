@@ -17,7 +17,9 @@
 [begin] (Fluxbox-1.3.7)
 [encoding] {UTF-8}
   [exec] (xterm) {xterm}
+  [exec] (lilyterm) {lilyterm}
   [exec] (vlc) {vlc}
+  [exec] (gimp) {gimp}
   [exec] (doublecmd) {doublecmd}
   [exec] (chromium) {chromium}
   [exec] (qbittorrent) {qbittorrent}
@@ -25,17 +27,29 @@
   [exec] (pcmanfm) {pcmanfm}
   [exec] (lxappearance) {lxappearance}
   [exec] (reconky) {pkill conky && conky -d}
+  [submenu] (games)
+    [exec] (snes-9x) {snes9x-gtk}
+  [end]
   [submenu] (hardware)
     [submenu] (storage)
       [exec] (mount usb stick) {xterm -e "usbstick.sh && echo Done. && read"}
       [exec] (unmount) {xterm -e "unmount.sh && echo Done. && read"}
     [end]
     [submenu] (audio)
+      [exec] (pa volume control) {pavucontrol}
+      [exec] (pa prefs) {paprefs}
+      [separator]
       [exec] (alsamixer) {xterm -e alsamixer}
       [exec] (list playback devices) {xterm -e "aplay -l && read"}
-      [separator]
-      [exec] (default hdmi) {hdmi_audio.sh on}
-      [exec] (default internal) {hdmi_audio.sh off}
+      # the following section moves/modifies the asound.rc file
+      # which may not be that good with pulseaudio installed
+      # [separator]
+      # [exec] (default hdmi) {hdmi_audio.sh on}
+      # [exec] (default internal) {hdmi_audio.sh off}
+    [end]
+    [submenu] (bluetooth)
+      [exec] (blueberry gui) {blueberry}
+      [exec] (low level interactive interface) {xterm -e bluetoothctl}
     [end]
     [submenu] (video)
       [submenu] (backlight)

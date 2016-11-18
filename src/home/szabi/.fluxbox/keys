@@ -6,7 +6,7 @@ OnDesktop Mouse2 :WorkspaceMenu
 OnDesktop Mouse3 :RootMenu
 OnTitlebar Mouse3 :WindowMenu
 Mod4 space :RootMenu
-Mod4 y :RootMenu
+Mod4 y :Exec xdotool mousemove 0 0 && fluxbox-remote RootMenu
 Mod1 space :WindowMenu
 Mod4 0 :WorkspaceMenu
 
@@ -30,12 +30,16 @@ Mod4 4 :Workspace 4
 Mod4 r :Exec fbrun
 Mod1 F2 :Exec fbrun
 Mod4 x :Exec xterm
-Mod4 a :Exec xterm -e alsamixer & sh -c "sleep .5 && fluxbox-remote maximizehorizontal"
+Mod1 Mod4 x :Exec lilyterm
+Mod4 a :Exec xterm -geometry 20x30+50+50 -e alsamixer
+Mod1 Mod4 a :Exec pavucontrol
 Mod4 j :Exec leafpad ~/jegyzet.txt
 Mod4 l :Exec ~/bin/xlock.sh
 Mod4 p :Exec video.sh vga
 Mod4 Mod1 p :Exec video.sh hdmi
 Control Shift Escape :Exec xterm -e htop & sh -c "sleep .5 && fluxbox-remote maximize"
+Mod4 Print :Exec gm import -window root ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S').png
+Mod1 Mod4 Print :Exec gm import -window "$(xdotool getwindowfocus -f)" ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S')-w.png
 
 # app switching
 # =============
@@ -59,20 +63,22 @@ OnToolbar Mouse5 :NextWindow {static groups} (iconhidden=no)
 #
 # * media keys
 # * win + alt + m = mute
-# * win + alt + right = vol up
-# * win + alt + left = vol down
+# * -win + alt + right = vol up-
+# * -win + alt + left = vol down-
 # * win + alt + up = brightness up
 # * win + alt + down = brightness down
 #
 # notes:
 # * raw volume inc/dec: amixer set Master 5+
+# * moving to pulse: I'll disable this for now, use `Win+a` and cursor keys
 #
-XF86AudioMute :Exec sound.sh mute
-XF86AudioRaiseVolume :Exec sound.sh up
-XF86AudioLowerVolume :Exec sound.sh down
-Mod4 Mod1 m :Exec sound.sh mute
-Mod4 Mod1 Right :Exec sound.sh up
-Mod4 Mod1 Left :Exec sound.sh down
+# XF86AudioMute :Exec sound.sh mute
+# XF86AudioRaiseVolume :Exec sound.sh up
+# XF86AudioLowerVolume :Exec sound.sh down
+# Mod4 Mod1 m :Exec sound.sh mute
+# Mod4 Mod1 Right :Exec sound.sh up
+# Mod4 Mod1 Left :Exec sound.sh down
+Mod4 Mod1 m :Exec ponymix toggle
 XF86MonBrightnessUp :Exec xbacklight -inc 10
 XF86MonBrightnessDown :Exec xbacklight -dec 10
 Mod4 Mod1 Up :Exec xbacklight -inc 10
@@ -100,10 +106,23 @@ OnLeftGrip Move1 :StartResizing bottomleft
 OnRightGrip Move1 :StartResizing bottomright
 OnTitlebar Mouse1 :MacroCmd {Raise} {Focus} {ActivateTab}
 OnTitlebar Move1  :StartMoving
+Ctrl Mod1 Mod4 Right :MoveRight 10
+Ctrl Mod1 Mod4 Left :MoveLeft 10
+Ctrl Mod1 Mod4 Up :MoveUp 10
+Ctrl Mod1 Mod4 Down :MoveDown 10
+Ctrl Mod1 Mod4 m c :MoveTo 0 0 Center
+Ctrl Mod1 Mod4 m Up :MoveTo 0 0 Top
+Ctrl Mod1 Mod4 m Down :MoveTo 0 0 Bottom
+Ctrl Mod1 Mod4 m Left :MoveTo 0 0 Left
+Ctrl Mod1 Mod4 m Right :MoveTo 0 0 Right
+Ctrl Mod1 Mod4 m Shift Up :MoveTo 0 0 TopRight
+Ctrl Mod1 Mod4 m Shift Down :MoveTo 0 0 BottomLeft
+Ctrl Mod1 Mod4 m Shift Left :MoveTo 0 0 TopLeft
+Ctrl Mod1 Mod4 m Shift Right :MoveTo 0 0 BottomRight
 #
 # shade and lower
 #
-OnTitlebar Double Mouse1 :Shade
+OnTitlebar Double Mouse1 :Minimize
 Mod4 s :Shade
 OnTitlebar Mouse4 :ShadeOn
 OnTitlebar Mouse5 :ShadeOff

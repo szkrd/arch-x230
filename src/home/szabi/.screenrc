@@ -20,6 +20,11 @@
 # * @\ = kill everything
 # * @k = kill current
 #
+# * @esc = scroll buffer
+#   * enter = copy mode
+#   * enter x 2 = exit (same as "q")
+#   * @] = paste
+#
 
 defscrollback 5000
 startup_message off
