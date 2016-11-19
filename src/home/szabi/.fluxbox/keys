@@ -132,6 +132,9 @@ OnTitlebar Control Mouse1 :StartTabbing
 # =======
 Mod4 Shift r :Reconfigure
 Control Mod1 Shift Delete :Exit
+Mod4 t :MacroCmd {SetResourceValue session.screen0.toolbar.visible true} {Reconfigure}
+Mod1 Mod4 t :MacroCmd {SetResourceValue session.screen0.toolbar.visible false} {Reconfigure}
+
 
 # unused
 # ======

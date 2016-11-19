@@ -87,6 +87,9 @@
     [submenu] (user styles) {Choose a style...}
       [stylesdir] (~/.fluxbox/styles)
     [end]
+    [submenu] (wallpapers)
+      [wallpapers] (~/pictures/wallpapers) {feh --bg-scale}
+    [end]
     [workspaces] (workspaces)
     [commanddialog] (run command)
     [reconfig] (reload config)
