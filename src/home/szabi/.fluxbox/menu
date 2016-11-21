@@ -18,6 +18,7 @@
 [encoding] {UTF-8}
   [exec] (xterm) {xterm}
   [exec] (lilyterm) {lilyterm}
+  [exec] (webstorm) {webstorm.sh}
   [exec] (vlc) {vlc}
   [exec] (gimp) {gimp}
   [exec] (doublecmd) {doublecmd}
@@ -29,6 +30,12 @@
   [exec] (reconky) {pkill conky && conky -d}
   [submenu] (games)
     [exec] (snes-9x) {snes9x-gtk}
+  [end]
+  [submenu] (vacak)
+    [exec] (ssh) {xterm -e vacak.sh szabi}
+    [exec] (mpd gui) {xterm -e vacak.sh music}
+    [exec] (mount share) {vacak.sh mount}
+    [exec] (unmount share) {vacak.sh umount}
   [end]
   [submenu] (hardware)
     [submenu] (storage)

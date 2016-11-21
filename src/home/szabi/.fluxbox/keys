@@ -1,45 +1,48 @@
 # menus
 # =====
 #
-OnDesktop Mouse1 :HideMenus
-OnDesktop Mouse2 :WorkspaceMenu
-OnDesktop Mouse3 :RootMenu
+OnDesktop Mouse1  :HideMenus
+OnDesktop Mouse2  :WorkspaceMenu
+OnDesktop Mouse3  :RootMenu
 OnTitlebar Mouse3 :WindowMenu
-Mod4 space :RootMenu
-Mod4 y :Exec xdotool mousemove 0 0 && fluxbox-remote RootMenu
-Mod1 space :WindowMenu
-Mod4 0 :WorkspaceMenu
+Mod4 space        :RootMenu
+Mod4 y            :Exec xdotool mousemove 0 0 && fluxbox-remote RootMenu
+Mod1 space        :WindowMenu
+Mod4 0            :WorkspaceMenu
+
 
 # workspaces
 # ==========
 #
-OnDesktop Mouse4 :PrevWorkspace
-OnDesktop Mouse5 :NextWorkspace
-Mod4 Right :NextWorkspace
-Mod4 Left :PrevWorkspace
-Control Mod4 Left :TakeToPrevWorkspace
-Control Mod4 Right :TakeToNextWorkspace
-Mod4 1 :Workspace 1
-Mod4 2 :Workspace 2
-Mod4 3 :Workspace 3
-Mod4 4 :Workspace 4
+OnDesktop Mouse4    :PrevWorkspace
+OnDesktop Mouse5    :NextWorkspace
+Mod4 Right          :NextWorkspace
+Mod4 Left           :PrevWorkspace
+Control Mod4 Left   :TakeToPrevWorkspace
+Control Mod4 Right  :TakeToNextWorkspace
+Mod4 1              :Workspace 1
+Mod4 2              :Workspace 2
+Mod4 3              :Workspace 3
+Mod4 4              :Workspace 4
+
 
 # applications
 # ============
 #
-Mod4 r :Exec fbrun
-Mod1 F2 :Exec fbrun
-Mod4 x :Exec xterm
-Mod1 Mod4 x :Exec lilyterm
-Mod4 a :Exec xterm -geometry 20x30+50+50 -e alsamixer
-Mod1 Mod4 a :Exec pavucontrol
-Mod4 j :Exec leafpad ~/jegyzet.txt
-Mod4 l :Exec ~/bin/xlock.sh
-Mod4 p :Exec video.sh vga
-Mod4 Mod1 p :Exec video.sh hdmi
-Control Shift Escape :Exec xterm -e htop & sh -c "sleep .5 && fluxbox-remote maximize"
-Mod4 Print :Exec gm import -window root ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S').png
+Mod4 r          :Exec fbrun
+Mod1 F2         :Exec fbrun
+Mod4 x          :Exec xterm
+Mod1 Mod4 x     :Exec lilyterm
+Mod4 a          :Exec xterm -geometry 20x30+50+50 -e alsamixer
+Mod1 Mod4 a     :Exec pavucontrol
+Mod4 j          :Exec leafpad ~/jegyzet.txt
+Mod4 l          :Exec ~/bin/xlock.sh
+Mod4 p          :Exec video.sh vga
+Mod4 Mod1 p     :Exec video.sh hdmi
+Mod4 Print      :Exec gm import -window root ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S').png
 Mod1 Mod4 Print :Exec gm import -window "$(xdotool getwindowfocus -f)" ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S')-w.png
+Control Shift Escape :Exec xterm -e htop & sh -c "sleep .5 && fluxbox-remote maximize"
+
 
 # app switching
 # =============
@@ -50,12 +53,13 @@ Mod1 Mod4 Print :Exec gm import -window "$(xdotool getwindowfocus -f)" ~/picture
 # * win + shift + tab = inner tab prev
 # * scroll on toolbar
 # 
-Mod1 Tab :NextWindow {groups} (workspace=[current])
-Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
-Mod4 Tab :NextTab
-Mod4 Shift Tab :PrevTab
-OnToolbar Mouse4 :PrevWindow {static groups} (iconhidden=no)
-OnToolbar Mouse5 :NextWindow {static groups} (iconhidden=no)
+Mod1 Tab          :NextWindow {groups} (workspace=[current])
+Mod1 Shift Tab    :PrevWindow {groups} (workspace=[current])
+Mod4 Tab          :NextTab
+Mod4 Shift Tab    :PrevTab
+OnToolbar Mouse4  :PrevWindow {static groups} (iconhidden=no)
+OnToolbar Mouse5  :NextWindow {static groups} (iconhidden=no)
+
 
 # volume and brightness
 # =====================
@@ -83,39 +87,93 @@ Mod4 Mod1 Down :Exec xbacklight -dec 10
 # handle windows
 # ==============
 #
-Mod1 F4 :Close
-Mod4 F4 :Kill
-Mod4 Down :Minimize
-Mod4 m :Minimize
-Mod4 Up :Maximize
-Mod4 F11 :Fullscreen
+Mod1 F4     :Close
+Mod4 F4     :Kill
+Mod4 Down   :Minimize
+Mod4 m      :Minimize
+Mod4 Up     :Maximize
+Mod4 F11    :Fullscreen
 Mod4 Mod1 d :ToggleDecor
-Mod4 d :ShowDesktop
+Mod4 d      :ShowDesktop
 #
-# move/resize and focus
+# simple move/resize and focus
 #
-OnWindow Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+OnWindow Mod4 Mouse1  :MacroCmd {Raise} {Focus} {StartMoving}
 #OnWindowBorder Move1 :StartMoving
-OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
-OnLeftGrip Move1 :StartResizing bottomleft
-OnRightGrip Move1 :StartResizing bottomright
-OnTitlebar Mouse1 :MacroCmd {Raise} {Focus} {ActivateTab}
-OnTitlebar Move1  :StartMoving
-Ctrl Mod1 Mod4 Right :MoveRight 10
-Ctrl Mod1 Mod4 Left :MoveLeft 10
-Ctrl Mod1 Mod4 Up :MoveUp 10
-Ctrl Mod1 Mod4 Down :MoveDown 10
-Ctrl Mod1 Mod4 m c :MoveTo 0 0 Center
-Ctrl Mod1 Mod4 m Up :MoveTo 0 0 Top
-Ctrl Mod1 Mod4 m Down :MoveTo 0 0 Bottom
-Ctrl Mod1 Mod4 m Left :MoveTo 0 0 Left
-Ctrl Mod1 Mod4 m Right :MoveTo 0 0 Right
-Ctrl Mod1 Mod4 m Shift Up :MoveTo 0 0 TopRight
-Ctrl Mod1 Mod4 m Shift Down :MoveTo 0 0 BottomLeft
-Ctrl Mod1 Mod4 m Shift Left :MoveTo 0 0 TopLeft
-Ctrl Mod1 Mod4 m Shift Right :MoveTo 0 0 BottomRight
+OnWindow Mod4 Mouse3  :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+OnLeftGrip Move1      :StartResizing bottomleft
+OnRightGrip Move1     :StartResizing bottomright
+OnTitlebar Mouse1     :MacroCmd {Raise} {Focus} {ActivateTab}
+OnTitlebar Move1      :StartMoving
+#
+# move and resize mode
+#
+# * win + w, m = activate
+# * esc = deactivate
+# * arrow keys = move
+# * shift arrow keys = resize
+# * tab, shift tab = cycle through visible windows
+# * win + left / right = move to prev/next workspace
+# * 1, 2, 3, 4 = switch to workspace
+# * snap to edges with:
+#   ```
+#   q w e
+#    \ /
+#   a s d
+#    / \
+#   y x c
+#   ```
+#
+Mod4 w m                    :KeyMode MoveMode
+MoveMode: None Up           :MoveUp 10
+MoveMode: None Down         :MoveDown 10
+MoveMode: None Left         :MoveLeft 10
+MoveMode: None Right        :MoveRight 10
+MoveMode: None q            :MoveTo 0 0 TopLeft
+MoveMode: None w            :MoveTo 0 0 Top
+MoveMode: None e            :MoveTo 0 0 TopRight
+MoveMode: None d            :MoveTo 0 0 Right
+MoveMode: None c            :MoveTo 0 0 BottomRight
+MoveMode: None x            :MoveTo 0 0 Bottom
+MoveMode: None y            :MoveTo 0 0 BottomLeft
+MoveMode: None a            :MoveTo 0 0 Left
+MoveMode: None s            :MoveTo 0 0 Center
+MoveMode: Shift Up          :ResizeVertical -10
+MoveMode: Shift Down        :ResizeVertical +10
+MoveMode: Shift Left        :ResizeHorizontal -10
+MoveMode: Shift Right       :ResizeHorizontal +10
+MoveMode: None Tab          :NextWindow {static} (workspace=[current]) (minimized=no)
+MoveMode: Shift Tab         :PrevWindow {static} (workspace=[current]) (minimized=no)
+MoveMode: None 1            :Workspace 1
+MoveMode: None 2            :Workspace 2
+MoveMode: None 3            :Workspace 3
+MoveMode: None 4            :Workspace 4
+MoveMode: Mod4 Right        :TakeToNextWorkspace
+MoveMode: Mod4 Left         :TakeToPrevWorkspace
+#
+# fat-resize mode
+#
+# * win + w, m = activate
+# * arrows = resize right, bottom
+# * shift arrows = resize top, left
+#
+Mod4 w r                    :KeyMode ResizeMode
+ResizeMode: None Up         :ResizeVertical -20
+ResizeMode: None Down       :ResizeVertical +20
+ResizeMode: None Left       :ResizeHorizontal -20
+ResizeMode: None Right      :ResizeHorizontal +20
+ResizeMode: Shift Down      :MacroCmd {ResizeVertical -20} {MoveDown 20}
+ResizeMode: Shift Up        :MacroCmd {ResizeVertical +20} {MoveUp 20}
+ResizeMode: Shift Right     :MacroCmd {ResizeHorizontal -20} {MoveRight 20}
+ResizeMode: Shift Left      :MacroCmd {ResizeHorizontal +20} {MoveLeft 20}
 #
 # shade and lower
+#
+# * title double click = minimize
+# * title roll up
+# * title roll down
+# * title middle = lower
+# * win + s = shade
 #
 OnTitlebar Double Mouse1 :Minimize
 Mod4 s :Shade
@@ -128,16 +186,17 @@ OnTitlebar Mouse2 :Lower
 #
 OnTitlebar Control Mouse1 :StartTabbing
 
+
 # fluxbox
 # =======
-Mod4 Shift r :Reconfigure
+Mod4 Shift r              :Reconfigure
 Control Mod1 Shift Delete :Exit
-Mod4 t :MacroCmd {SetResourceValue session.screen0.toolbar.visible true} {Reconfigure}
-Mod1 Mod4 t :MacroCmd {SetResourceValue session.screen0.toolbar.visible false} {Reconfigure}
+Mod4 t                    :MacroCmd {SetResourceValue session.screen0.toolbar.visible true} {Reconfigure}
+Mod1 Mod4 t               :MacroCmd {SetResourceValue session.screen0.toolbar.visible false} {Reconfigure}
 
 
-# unused
-# ======
+# unused and examples
+# ===================
 #
 #Mod4 Left :SendToPrevWorkspace
 #Mod4 Right :SendToNextWorkspace
