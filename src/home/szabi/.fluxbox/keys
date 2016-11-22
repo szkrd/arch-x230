@@ -31,8 +31,8 @@ Mod4 4              :Workspace 4
 #
 Mod4 r          :Exec fbrun
 Mod1 F2         :Exec fbrun
-Mod4 x          :Exec xterm
-Mod1 Mod4 x     :Exec lilyterm
+Mod4 x          :Exec lilyterm
+Mod1 Mod4 x     :Exec xterm
 Mod4 a          :Exec xterm -geometry 20x30+50+50 -e alsamixer
 Mod1 Mod4 a     :Exec pavucontrol
 Mod4 j          :Exec leafpad ~/jegyzet.txt

@@ -1,0 +1,22 @@
+# tlp - systemd startup/shutdown service
+#
+# Copyright (c) 2016 Thomas Koch <linrunner at gmx.net>
+# This software is licensed under the GPL v2 or later.
+
+[Unit]
+Description=TLP system startup/shutdown
+Wants=bluetooth.service 
+#from the above line: NetworkManager.service
+After=multi-user.target bluetooth.service
+#from the above line: NetworkManager.service
+Before=shutdown.target
+Documentation=http://linrunner.de/tlp
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/tlp init start
+ExecStop=/usr/bin/tlp init stop
+
+[Install]
+WantedBy=multi-user.target
