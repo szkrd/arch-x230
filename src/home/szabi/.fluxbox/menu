@@ -57,6 +57,8 @@
     [submenu] (bluetooth)
       [exec] (blueberry gui) {blueberry}
       [exec] (low level interactive interface) {xterm -e bluetoothctl}
+      [separator]
+      [exec] (connect to speakers SRS-XB2x2) {echo -e "connect B8:69:C2:22:90:4F\nquit\n" | bluetoothctl}
     [end]
     [submenu] (video)
       [submenu] (backlight)
