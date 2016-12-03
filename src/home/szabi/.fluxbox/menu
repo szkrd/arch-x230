@@ -90,7 +90,7 @@
   [submenu] (fluxbox)
     [exec] (config files) {geany -s ~/.fluxbox/startup ~/.fluxbox/menu ~/.fluxbox/keys ~/.fluxbox/init}
     [config] (configure)
-    [submenu] (system styles) {Choose a style...}
+    [submenu] (system styles) {Choohttp://unix.stackexchange.com/questions/292444/using-systemd-timers-instead-of-cronse a style...}
       [stylesdir] (/usr/share/fluxbox/styles)
     [end]
     [submenu] (user styles) {Choose a style...}
@@ -108,9 +108,9 @@
     [exit] (exit fluxbox)
   [end]
   [submenu] (exit)
-    [exec] (suspend/sleep) {sudo systemctl suspend && xlock.sh}
-    [exec] (hibernate) {sudo systemctl hibernate && xlock.sh}
-    [exec] (hybrid-sleep) {sudo systemctl hybrid-sleep && xlock.sh}
+    [exec] (suspend/sleep) {sudo systemctl suspend}
+    [exec] (hibernate) {sudo systemctl hibernate}
+    [exec] (hybrid-sleep) {sudo systemctl hybrid-sleep}
     [separator]
     [exec] (reboot) {lxqt-sudo systemctl reboot}
     [exec] (poweroff) {lxqt-sudo systemctl poweroff}
