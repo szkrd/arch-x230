@@ -73,3 +73,29 @@ Timers are a bit like cron jobs, but are handled by systemd. The cron syntax is 
 * a .timer file controls a .service file
 * an example is [here](http://unix.stackexchange.com/questions/292444/using-systemd-timers-instead-of-cron), a generic battery check and hibernate combo
 
+## Mounting
+
+* mounts from fstab
+* we can add _x-systemd_ options to fstab
+* has an automounter (may be configurable via fstab or .automount)
+
+Delayed/lazy mounting is possible with systemd:
+`noauto,x-systemd.automount,x-systemd.idle-timeout=1min` - which may or may not worth the hassle.
+
+## Journal
+
+* Syslog is not needed anymore, use `journalctl`
+* severity level is from 0 (emergency) to 7 (debug)
+* levels are incluseive. To show 0 and 1: `journalctl -p 1`
+* max journal size is 10% of partition, but max 4Gb (override w _SystemMaxUse=XXXM_ in journald.conf, then restart with `systemctl restart systemd-journald`)
+* some useful options:
+  * `-b` - since boot
+  * `-PID=` - by pid
+  * `-k` - kernel/dmesg
+  * `--disk-usage` - du
+  * `--vacuum-time=2weeks` - manual cleanup
+
+## Notes
+
+* read the wiki, read the forum
+* mkinitcpio will not be run on systemd update, do it manually or add a pacman [hook](https://bbs.archlinux.org/viewtopic.php?id=215411)
