@@ -30,6 +30,7 @@
   [exec] (reconky) {pkill conky && conky -d}
   [submenu] (games)
     [exec] (snes-9x) {snes9x-gtk}
+    [exec] (sdl mame) {sdlmame}
   [end]
   [submenu] (vacak)
     [exec] (ssh) {xterm -e vacak.sh szabi}
@@ -38,6 +39,11 @@
     [exec] (unmount share) {vacak.sh umount}
   [end]
   [submenu] (hardware)
+    [submenu] (network)
+      [exec] (nm connection editor) {nm-connection-editor}
+      # [exec] (wicd curses) {xterm -geometry 100x40+30+30 -e wicd-curses}
+      # [exec] (wpa supplicant gui*) {lxqt-sudo wpa_gui}
+    [end]
     [submenu] (storage)
       [exec] (mount usb stick) {xterm -e "usbstick.sh && echo Done. && read"}
       [exec] (unmount) {xterm -e "unmount.sh && echo Done. && read"}
@@ -57,8 +63,8 @@
     [submenu] (bluetooth)
       [exec] (blueberry gui) {blueberry}
       [exec] (low level interactive interface) {xterm -e bluetoothctl}
-      [separator]
-      [exec] (connect to speakers SRS-XB2x2) {echo -e "connect B8:69:C2:22:90:4F\nquit\n" | bluetoothctl}
+      # [separator] // disabled this part, the speakers were not that good
+      # [exec] (connect to speakers SRS-XB2x2) {echo -e "connect B8:69:C2:22:90:4F\nquit\n" | bluetoothctl}
     [end]
     [submenu] (video)
       [submenu] (backlight)
@@ -89,12 +95,17 @@
   [end]
   [submenu] (fluxbox)
     [exec] (config files) {geany -s ~/.fluxbox/startup ~/.fluxbox/menu ~/.fluxbox/keys ~/.fluxbox/init}
+    [submenu] (wallpapers)
+      [wallpapers] (~/pictures/wallpapers)
+    [end]
     [config] (configure)
-    [submenu] (system styles) {Choohttp://unix.stackexchange.com/questions/292444/using-systemd-timers-instead-of-cronse a style...}
+    [submenu] (system styles) {Choose a style...}
       [stylesdir] (/usr/share/fluxbox/styles)
     [end]
     [submenu] (user styles) {Choose a style...}
       [stylesdir] (~/.fluxbox/styles)
+      [separator]
+      [stylesdir] (~/.fluxbox/styles-tenner)
     [end]
     [submenu] (wallpapers)
       [wallpapers] (~/pictures/wallpapers) {feh --bg-scale}
@@ -112,8 +123,8 @@
     [exec] (hibernate) {sudo systemctl hibernate}
     [exec] (hybrid-sleep) {sudo systemctl hybrid-sleep}
     [separator]
-    [exec] (reboot) {lxqt-sudo systemctl reboot}
-    [exec] (poweroff) {lxqt-sudo systemctl poweroff}
+    [exec] (reboot*) {lxqt-sudo systemctl reboot}
+    [exec] (poweroff*) {lxqt-sudo systemctl poweroff}
     [exec] (exit fluxbox) {xterm -e "echo U sure? && read && fluxbox-remote exit"}
   [end]
 [endencoding]

@@ -38,6 +38,7 @@ Mod1 Mod4 a     :Exec pavucontrol
 Mod4 j          :Exec leafpad ~/jegyzet.txt
 Mod4 l          :Exec ~/bin/xlock.sh
 Mod4 p          :Exec video.sh vga
+Mod1 Mod4 s     :Exec touchpad_toggle.sh
 Mod4 Mod1 p     :Exec video.sh hdmi
 Mod4 Print      :Exec gm import -window root ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S').png
 Mod1 Mod4 Print :Exec gm import -window "$(xdotool getwindowfocus -f)" ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S')-w.png
@@ -80,8 +81,8 @@ Mod4 Mod1 Left :Exec ponymix decrease 10
 Mod4 Mod1 m :Exec ponymix toggle
 XF86MonBrightnessUp :Exec xbacklight -inc 10
 XF86MonBrightnessDown :Exec xbacklight -dec 10
-Mod4 Mod1 Up :Exec xbacklight -inc 10
-Mod4 Mod1 Down :Exec xbacklight -dec 10
+Mod4 Mod1 Up :Exec xbacklight -inc 5
+Mod4 Mod1 Down :Exec xbacklight -dec 5
 
 
 # handle windows
