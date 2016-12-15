@@ -76,5 +76,4 @@ Migrating from another network manager be sure to read the wpa_supplicant sectio
 ### problems
 
 * dependencies galore
-* gnome keyring
-* will see...
+* "wifi association took too long" error
