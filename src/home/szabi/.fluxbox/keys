@@ -76,9 +76,9 @@ OnToolbar Mouse5  :NextWindow {static groups} (iconhidden=no)
 XF86AudioMute :Exec ponymix toggle
 XF86AudioRaiseVolume :Exec ponymix increase 10
 XF86AudioLowerVolume :Exec ponymix decrease 10
-Mod4 Mod1 Right :Exec ponymix increase 10
-Mod4 Mod1 Left :Exec ponymix decrease 10
-Mod4 Mod1 m :Exec ponymix toggle
+Mod4 Mod1 Right :Exec sound.sh up
+Mod4 Mod1 Left :Exec sound.sh down
+Mod4 Mod1 m :Exec sound.sh toggle
 XF86MonBrightnessUp :Exec xbacklight -inc 10
 XF86MonBrightnessDown :Exec xbacklight -dec 10
 Mod4 Mod1 Up :Exec xbacklight -inc 5

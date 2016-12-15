@@ -1,0 +1,11 @@
+[Unit]
+Description=Lock X session using xtrlock
+
+[Service]
+User=szabi
+Environment=DISPLAY=:0
+ExecStartPost=/usr/bin/sleep 1
+ExecStart=/usr/local/bin/xlock.sh
+
+[Install]
+WantedBy=sleep.target
