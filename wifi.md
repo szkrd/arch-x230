@@ -77,3 +77,4 @@ Migrating from another network manager be sure to read the wpa_supplicant sectio
 
 * dependencies galore
 * "wifi association took too long" error
+* connections disappearing from nm-applet (only hidden create is available)
