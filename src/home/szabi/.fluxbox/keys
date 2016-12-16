@@ -36,7 +36,7 @@ Mod1 Mod4 x     :Exec xterm
 Mod4 a          :Exec xterm -geometry 20x30+50+50 -e alsamixer
 Mod1 Mod4 a     :Exec pavucontrol
 Mod4 j          :Exec leafpad ~/jegyzet.txt
-Mod4 l          :Exec ~/bin/xlock.sh
+Mod4 l          :Exec xlock.sh
 Mod4 p          :Exec video.sh vga
 Mod1 Mod4 s     :Exec touchpad_toggle.sh
 Mod4 Mod1 p     :Exec video.sh hdmi
