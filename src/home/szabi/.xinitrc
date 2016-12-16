@@ -1,6 +1,12 @@
-# https://wiki.archlinux.org/index.php?title=SSH_keys&redirect=no#Keychain
-#keychain ~/.ssh/id_rsa
-#[ -f ~/.keychain/$HOSTNAME-sh ] && . ~/.keychain/$HOSTNAME-sh 2>/dev/null
+if pgrep ssh-agent>/dev/null;
+  then echo "ssh-agent running";
+  else eval $(ssh-agent);
+fi
+
+## use gnome keyring as an ssh agent (after setting up thins in /etc/pam.d login and passwd)
+## yep, tecnically it should work, but it does not :(
+#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+#export SSH_AUTH_SOCK
 
 xrdb ~/.Xresources
 setxkbmap hu
