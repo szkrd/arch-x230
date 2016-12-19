@@ -18,4 +18,6 @@ setxkbmap hu
 # yes, kinda breaks
 # compton -b
 
+dropboxd &
+
 exec startfluxbox
