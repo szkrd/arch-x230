@@ -57,7 +57,7 @@ WantedBy=sleep.target
 
 * frontends are quite unstable
 * very old, afaik unmaintained
-* packet loss 100% upon wake up (rare, may be routing related? TODO: `route -n`)
+* packet loss 100% upon wake up (rare, probably firmware level, not related to wicd)
 
 ## NetworkManager
 
@@ -77,4 +77,5 @@ Migrating from another network manager be sure to read the wpa_supplicant sectio
 
 * dependencies galore
 * "wifi association took too long" error
-* connections disappearing from nm-applet (only hidden create is available)
+* connections disappearing from nm-applet (only hidden and create are available)
+* icon not updating (showing the computer icon or empty bars) after a long time
