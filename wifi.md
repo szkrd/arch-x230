@@ -79,3 +79,45 @@ Migrating from another network manager be sure to read the wpa_supplicant sectio
 * "wifi association took too long" error
 * connections disappearing from nm-applet (only hidden and create are available)
 * icon not updating (showing the computer icon or empty bars) after a long time
+
+Packet loss
+===========
+
+I have constant problems with the intel wifi driver (iwlwifi). The latest microcode update was totally broken but the real problem is that sometimes the driver freaks out and I end up having 100% packet loss. This usually happens after sleep and very rarely after a reboot or cold start. This seems to be a problem with multiple Lenovo Thinkpads, though most people just restart NetworkManager and hoping for the best.
+
+The journal shows no wireless related errors (the ones I had were connected to wicd, nm seems to be okay), routing table is fine, assigned ip is good, dns servers are okay.
+
+So far turning off wifi power management helped (which is kinda tricky, because the driver will reset the value after waking up from a sleep):
+
+## iwlwifi module settings
+
+in /etc/modprobe.d/iwlwifi.conf (wireless N used to cause problems, so let's disable that too)
+
+```
+options iwlwifi 11n_disable=1
+options iwlwifi power_save=0
+```
+
+## NetworkManager profiles
+
+in /etc/NetworkManager/system-connections/SSID
+
+```
+[wifi]
+mac-address=...
+mac-address-blacklist=
+mac-address-randomization=0
+mode=infrastructure
+seen-bssids=
+ssid=SSID
+powersave=0
+```
+
+## Advanced power management
+
+in /etc/default/tlp
+
+```
+WIFI_PWR_ON_AC=off
+WIFI_PWR_ON_BAT=off
+```
