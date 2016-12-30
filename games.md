@@ -14,4 +14,7 @@ Unfortunately the config __saving is buggy__. It saves into
 (thank you, strace). Just link higher level ones into the ini folder
 and be sure to add go+rw with chmod.
 
-Sdlmame is mame 0.180, earlier ROM sets will NOT work reliably.
+Sdlmame (as of this writing) is mame 0.180, earlier ROM sets will NOT work reliably.
+
+Probably it is a good idea to lock the version in `pacman.conf` after installation
+(`IgnorePkg = sdlmame`).
