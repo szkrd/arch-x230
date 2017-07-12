@@ -18,31 +18,39 @@
 [encoding] {UTF-8}
   [exec] (xterm) {xterm}
   [exec] (lilyterm) {lilyterm}
+  [nop] (----)
   [exec] (webstorm) {webstorm.sh}
-  [exec] (vlc) {vlc}
-  [exec] (gimp) {gimp}
   [exec] (doublecmd) {doublecmd}
   [exec] (chromium) {chromium}
   [exec] (qbittorrent) {qbittorrent}
-  [exec] (audacious) {audacious}
+  [exec] (filezilla) {filezilla}
   [exec] (pcmanfm) {pcmanfm}
-  [exec] (lxappearance) {lxappearance}
+  [exec] (lxappearance gtk laf) {lxappearance}
   [exec] (reconky) {pkill conky && conky -d}
+  [nop] (----)
+  [submenu] (images)
+    [exec] (gimp) {gimp}
+    [exec] (viewnior) {viewnior}
+    [exec] (mirage) {mirage}
+  [end]
+  [submenu] (players)
+    [exec] (smplayer) {smplayer}
+    [exec] (vlc) {vlc}
+    [exec] (audacious) {audacious}
+  [end]
   [submenu] (games)
     [exec] (snes-9x) {snes9x-gtk}
     [exec] (sdl mame) {sdlmame}
   [end]
   [submenu] (vacak)
     [exec] (ssh) {xterm -e vacak.sh szabi}
-    [exec] (mpd gui) {xterm -e vacak.sh music}
+    [exec] (mpd gui ncmpcpp) {xterm -e vacak.sh music}
     [exec] (mount share) {vacak.sh mount}
     [exec] (unmount share) {vacak.sh umount}
   [end]
   [submenu] (hardware)
     [submenu] (network)
       [exec] (nm connection editor) {nm-connection-editor}
-      # [exec] (wicd curses) {xterm -geometry 100x40+30+30 -e wicd-curses}
-      # [exec] (wpa supplicant gui*) {lxqt-sudo wpa_gui}
     [end]
     [submenu] (storage)
       [exec] (mount usb stick) {xterm -e "usbstick.sh && echo Done. && read"}

@@ -55,7 +55,7 @@ Certain actions may be needed on sleep start/stop (like wireless reinit or locki
 * Bootloader kernel param example: `systemd.unit=rescue.target`
 * Or set default target (all the time): `systemctl set-default multi-user.target` (symlinks to default.target "somewhere", use -f to override)
 
-Services may be linked to targets. Create a directory with __.wants__ postfix, for example: `ls /etc/systemd/system/sleep.target.wants/` has three files for me (two added manually, one symlinked by the system, as of this writing): `tlp-sleep.service  wicd-sleep.service  xlock.service`
+Services may be linked to targets. Create a directory with __.wants__ postfix, for example: `ls /etc/systemd/system/sleep.target.wants/` has three files for me (two added manually, one symlinked by the system, as of this writing): `tlp-sleep.service  wicd-sleep.service  xlock.service` (BUT all of these MUST be symlinks now)
 
 ## Temp files
 
@@ -99,3 +99,16 @@ Delayed/lazy mounting is possible with systemd:
 
 * read the wiki, read the forum
 * mkinitcpio will not be run on systemd update, do it manually or add a pacman [hook](https://bbs.archlinux.org/viewtopic.php?id=215411)
+
+## Troubleshooting
+
+### Power management: sleep target dependencies stopped working (lockscreen on lid close) - 2017.07.12.
+
+1. `systemctl status sleep.target` or `journalctl | grep sleep.target` -
+   it says that from now on only _symlinks_ shall be used
+2. `mv sleep.target.wants/xlock.service /etc/systemd/system/_xlock.service` -
+   this is the location for the administrator's override scripts;
+   while this is not an override script per se, it's still better
+   here than in usr/lib or in /root/stuff
+3. `ln -s /etc/systemd/system/_xlock.service ./_xlock.service` -
+   wiggle your big toe

@@ -40,7 +40,7 @@ Mod4 l          :Exec xlock.sh
 Mod4 p          :Exec video.sh vga
 Mod1 Mod4 s     :Exec touchpad_toggle.sh
 Mod4 Mod1 p     :Exec video.sh hdmi
-Mod4 Print      :Exec gm import -window root ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S').png
+Mod4 Print      :Exec ~/bin/screenshot.sh
 Mod1 Mod4 Print :Exec gm import -window "$(xdotool getwindowfocus -f)" ~/pictures/screenshots/$(date +'%Y%m%d%H%M%S')-w.png
 Control Shift Escape :Exec xterm -e htop & sh -c "sleep .5 && fluxbox-remote maximize"
 
