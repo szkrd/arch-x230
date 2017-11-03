@@ -20,12 +20,14 @@
   [exec] (lilyterm) {lilyterm}
   [nop] (----)
   [exec] (webstorm) {webstorm.sh}
+  [exec] (vscode) {code}
   [exec] (doublecmd) {doublecmd}
   [exec] (chromium) {chromium}
   [exec] (qbittorrent) {qbittorrent}
   [exec] (filezilla) {filezilla}
   [exec] (pcmanfm) {pcmanfm}
   [exec] (lxappearance gtk laf) {lxappearance}
+  [exec] (calibre) {calibre}
   [exec] (reconky) {pkill conky && conky -d}
   [nop] (----)
   [submenu] (images)
@@ -49,12 +51,17 @@
     [exec] (unmount share) {vacak.sh umount}
   [end]
   [submenu] (hardware)
+    [submenu] (keyboard)
+      [exec] (keymap hu) {setxkbmap hu}
+      [exec] (keymap us) {setxkbmap us}
+    [end]
     [submenu] (network)
       [exec] (nm connection editor) {nm-connection-editor}
     [end]
     [submenu] (storage)
       [exec] (mount usb stick) {xterm -e "usbstick.sh && echo Done. && read"}
       [exec] (unmount) {xterm -e "unmount.sh && echo Done. && read"}
+      [exec] (watch sync) {xterm -e "watch grep -e Dirty: -e Writeback: /proc/meminfo"}
     [end]
     [submenu] (audio)
       [exec] (pa volume control) {pavucontrol}
