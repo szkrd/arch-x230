@@ -104,11 +104,22 @@ Delayed/lazy mounting is possible with systemd:
 
 ### Power management: sleep target dependencies stopped working (lockscreen on lid close) - 2017.07.12.
 
-1. `systemctl status sleep.target` or `journalctl | grep sleep.target` -
+1. `systemctl status sleep.target` or `journalctl | grep sleep.target` - 
    it says that from now on only _symlinks_ shall be used
-2. `mv sleep.target.wants/xlock.service /etc/systemd/system/_xlock.service` -
+2. `mv sleep.target.wants/xlock.service /etc/systemd/system/_xlock.service` - 
    this is the location for the administrator's override scripts;
    while this is not an override script per se, it's still better
    here than in usr/lib or in /root/stuff
-3. `ln -s /etc/systemd/system/_xlock.service ./_xlock.service` -
+3. `ln -s /etc/systemd/system/_xlock.service ./_xlock.service` - 
    wiggle your big toe
+
+### Module loading during startup
+
+1. remove `quiet` from kernel boot params (press "e" in grub), or replace with `debug` - 
+   Useless: not verbose enough (or way too verbose), tty buffer fills up way too fast
+2. `systemctl status systemd-modules-load.service` - 
+   Useless: "Journal has been rotated since unit was started." (even after vacuuming)
+3. `journalctl -u systemd-modules-load.service` - 
+   Useless: "Transport endpoint is not connected"
+4. `/usr/lib/systemd/systemd-modules-load` (elf bin) - 
+   Helpful: "Failed to insert 'acpi_call': ..."
