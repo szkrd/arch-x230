@@ -1,0 +1,43 @@
+# lightweight applications
+
+I'm using fluxbox and trying to avoid gnome and kde land. Unless utherwise stated, these apps are in the official repo.
+
+- gui commander clone: (?)
+- clipboard manager: **parcellite**  
+  unmaintained, but still works fine. *clipit* is in aur.
+- torrent: **qbittorrent**
+- ftp: **filezilla**
+- gtk theme selector: **lxappearance**
+- desktop system monitor: **conky**
+- toolbar: **tint2**  
+  in case I need something fancy with icons
+- pdv viewer: **qpdfview**  
+  or *mupdf*, but that's brutally bare. *foxitreader* should be fine, but it's a mess on linux, adobe is crap.
+- image viewer: **viewnior**  
+  or **mirage** from aur, but they are very very similar to each other.
+- media players: **smplayer**, **vlc**  
+  nothing interesting here; smplayer has proper acceleration though, no screen tearing on my intel integrated gpu.
+- audio player: good old **audacious**  
+  or **mpd** on my standalone laptop.
+- pulse audio: **pavucontrol**, **paprefs**  
+  for a popup volume setter I use the console **alsamixer**
+- audio control via keyboard: **ponymix**  
+  toggle, increase, decrease etc. in fb keys file.
+- bluetooth gui: **blueberry**  
+  but bluetooth is unstable, so it doesn't matter. *bluetoothctrl* is terrible.
+- backlight control: **xbacklight**
+- gui editor: **geany**
+- terminal: **lxterminal**  
+  or there is *lilyterm* in aur which has fake bg transparency.
+- tray battery monitor: **cbatticon**  
+  or *batterymon-clone* from aur which has a nicer icon.
+
+## AUR only
+
+- merge pac configs: **etc-update**  
+  just like in gentoo
+- synaptics configuration: **gpointing-device-settings**  
+  or do it manually like in the wiki
+- access mac formatted stuff: **hfsprogs**
+- aur: **trizen**  
+  now that yaourt is unmaintained
