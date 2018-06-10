@@ -27,8 +27,8 @@ I'm using fluxbox and trying to avoid gnome and kde land. Unless utherwise state
   but bluetooth is unstable, so it doesn't matter. *bluetoothctrl* is terrible.
 - backlight control: **xbacklight**
 - gui editor: **geany**
-- terminal: **lxterminal**  
-  or there is *lilyterm* in aur which has fake bg transparency.
+- terminal: **urxvt** or maybe **lxterminal** which is slow (as a vte wrapper)  
+  or there is *lilyterm* in aur which is fast, but is unmaintained.
 - tray battery monitor: **cbatticon**  
   or *batterymon-clone* from aur which has a nicer icon.
 
