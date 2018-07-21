@@ -1,18 +1,62 @@
 !dpi should be 125.37, but thats just huge
-!the rest has been taken from the arch forum 
-xft.dpi:        110
-xft.antialias:  true
-xft.rgba:       rgb
-xft.hinting:    true
-xft.hintstyle:  hintslight
+xft.dpi: 110
+xft.antialias: true
+xft.rgba: rgb
+xft.hinting: true
+xft.hintstyle: hintslight
 
 !xterm settings, mostly taken from the arch wiki
-xterm*reverseVideo: on
-xterm*termName: xterm-256color
-xterm*locale: true
-xterm*metaSendsEscape: true
-xterm*eightBitInput: false
-xterm*FaceName: Liberation Mono
-xterm*FaceSize: 11
-XTerm*backarrowKey: false
-XTerm*ttyModes: erase ^?
+xterm.vt100.reverseVideo: on
+xterm.termName: xterm-256color
+xterm.vt100.locale: true
+xterm.vt100.metaSendsEscape: true
+xterm.vt100.eightBitInput: false
+xterm.vt100.faceName: Inconsolata
+xterm.vt100.faceSize: 15
+xterm.vt100.backarrowKey: false
+xterm.ttyModes: erase ^?
+
+!----------------------------------
+
+urxvt.scrollBar: false
+urxvt.font: xft:inconsolata:size=15
+urxvt.letterSpace: -1
+urxvt.perl-ext-common: default,matcher,tabbedex,fullscreen,newterm,resize-font
+urxvt.inheritPixmap: true
+urxvt.transparent: true
+urxvt.shading: 10
+urxvt.iso14755: false
+urxvt.url-launcher: /usr/bin/xdg-open
+urxvt.keysym.F11: perl:fullscreen:switch
+urxvt.keysym.C-S-N: perl:newterm
+urxvt.keysym.C-Down: resize-font:smaller
+urxvt.keysym.C-Up: resize-font:bigger
+urxvt.perl-lib: /usr/lib/urxvt/perl/
+urxvt.matcher.button: 1
+urxvt.matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+
+! Xterm escapes, word by word movement
+urxvt.keysym.Control-Left: \033[1;5D
+urxvt.keysym.Control-Right: \033[1;5C
+
+! Molokai theme
+! See: https://gist.github.com/vreon/845878
+urxvt.background: #101010
+urxvt.foreground: #d0d0d0
+urxvt.cursorColor: #d0d0d0
+urxvt.color0: #101010
+urxvt.color1: #960050
+urxvt.color2: #66aa11
+urxvt.color3: #c47f2c
+urxvt.color4: #30309b
+urxvt.color5: #7e40a5
+urxvt.color6: #3579a8
+urxvt.color7: #9999aa
+urxvt.color8: #303030
+urxvt.color9: #ff0090
+urxvt.color10: #80ff00
+urxvt.color11: #ffba68
+urxvt.color12: #5f5fee
+urxvt.color13: #bb88dd
+urxvt.color14: #4eb4fa
+urxvt.color15: #d0d0d0
