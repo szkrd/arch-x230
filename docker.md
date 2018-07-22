@@ -16,7 +16,6 @@
 4. you may need to add addresses and hostnames to your `/etc/hosts`
 5. to access a custom registry: `docker login registry.foobar.net`
 
-
 ## Segfaults inside containers
 
 in `/etc/default/grub`
@@ -29,6 +28,37 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/mapper/VolGroup00-lvolswap sysrq_a
 
 rebuild the config with `grub-mkconfig -o /boot/grub/grub.cfg`
 and then reboot.
+
+## Access through nfs
+
+This has been done on macos, but probably doing it on linux is pretty similar
+(though on linux file system access through docker doesn't suck monkey balls).
+
+1. /etc/nfs.conf: `nfs.server.mount.require_resv_port = 0`
+2. /etc/exports: `/Users -alldirs -insecure -mapall=501:20 localhost` (or use /home)
+3. export `PROJECT_DIR` in bash_profile (or bashrc for proper distros)
+
+Defining volumes in docker:
+
+```yaml
+version: "3.2"
+
+volumes:
+  api-nfs:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      device: ":${PROJECT_DIR}/api/var/cache"
+#...
+#...
+services:
+  api:
+    volumes:
+      - "api-nfs:/var/www/html/var/cache"
+      #  ^         ^
+      # from nfs   into container
+```
 
 ## Useful commands and scripts
 
