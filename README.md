@@ -2,8 +2,6 @@
 
 Arch linux on a Lenovo X230 notebook.
 
-And sometimes bit of a trickery for MacOS.
-
 ## Table of contents
 
 - [bluetooth](./bluetooth.md)
