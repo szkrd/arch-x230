@@ -15,6 +15,8 @@ ExecStart=
 ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --userns-remap=szabi --data-root=/home/szabi/.docker
 ```
 
+(for me it works from the commandline, but not from the service)
+
 - This opens up the api interface to your docker installation.  
  You can access it with [portainer](https://portainer.readthedocs.io/) for example.  
 - Since my root partition is small I used the `--data-root` parameter.
