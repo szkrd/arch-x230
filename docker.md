@@ -6,7 +6,7 @@
 Install docker.
 
 **2.)**
-With root create a docker config override: `systemctl edit docker.service`  
+With root create a docker **config** override: `systemctl edit docker.service`  
 (assuming you are not using the json configuration)    
 
 ```
@@ -23,13 +23,13 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock 
   (userns-remap parameter).
 
 **3.)**
-Add your user to the docker *group* (`gpasswd -a szabi docker`)
+Add your user to the _docker_ **group** (`gpasswd -a szabi docker`)
 
 You may want to set docker as your default group, but that seems
 to be a bad idea.
 
 **4.)**
-Create mappings in /etc (from container to host):
+Create **mappings** in /etc (from container to host):
 
 _/etc/subuid_
 ```
@@ -49,7 +49,7 @@ Get the appropriate numbers from `/etc/passwd` and `/etc/groups`.
 Enable docker:  `systemctl start docker`
 
 **6.)**
-Modify systemwide [umask](https://wiki.archlinux.org/index.php/umask).
+Modify systemwide **[umask](https://wiki.archlinux.org/index.php/umask)**.
 (permissions for new files created) This is important,
 since folders accessed by docker (via the docker group) must be writable (`rw-`), but
 default group permission for new files on most systems is read only (`r--`).
@@ -67,26 +67,25 @@ If you're using git only from the commandline, then you can wrap
 the executable in an alias or a function (umask 002 && git).
 
 **7.)**
-Make git respect umask values: git ignores umask by default. Use the
+Make git **respect umask** values: git ignores umask by default. Use the
 `git config --global core.sharedRepository group` to enable it for your user.
 
 **8.)**
 When you checkout a repository that you want to use with docker
-first you must set the group ownership (after you added your custom
+first you must **set the group ownership** (after you added your custom
 secret, dotenv or nodemon files):
 
 `chgrp -R docker .` (in the repo dir)
 
 **9.)**
-Since in the future all checked out files must belong to the
-docker group (the umasks we have fixed above), we need a
-[post-checkout](https://git-scm.com/docs/githooks#_post_checkout)
-hook in the repository (or again, you can hack yourself a bash commit
-wrapper, if you never leave the terminal).
+All **new files** should be in the docker group inside the
+repository. Set the repo folder group owner to docker (`chgrp docker ./repo`),
+and set the group to sticky (`chmod g+s ./repo`).
 
-Probably a `chgrp -R docker .` in your docker up script may be enough,
-or you can check this [example script](https://github.com/git/git/blob/master/contrib/hooks/setgitperms.perl)
-for a more robust solution.
+(If you find this solution ugly, there are other ways (writing
+[post-checkout](https://git-scm.com/docs/githooks#_post_checkout) hooks,
+or use this [example script](https://github.com/git/git/blob/master/contrib/hooks/setgitperms.perl),
+ymmv)
 
 ## Kernel parameters
 
@@ -101,8 +100,6 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/mapper/VolGroup00-lvolswap sysrq_a
 rebuild the config with `grub-mkconfig -o /boot/grub/grub.cfg`
 and then reboot.
 
-##
-
 ## Useful commands and scripts
 
 - `docker login registry.foobar.net`  
@@ -114,8 +111,6 @@ and then reboot.
 - `docker exec -it foobar_project_1 bash`
 - `docker logs foobar_project_1 -f`
 - `docker inspect -f '{{.State.Health}}' foobar_project_1`
-
-
 - `docker stop <CONTAINER ID>`
 - `docker kill <CONTAINER ID>`
 - `docker rm <CONTAINER ID>`
